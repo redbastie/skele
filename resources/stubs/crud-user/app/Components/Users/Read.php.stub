@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Components\Users;
+
+use App\Models\User;
+use Redbastie\Skele\Components\ModalComponent;
+
+class Read extends ModalComponent
+{
+    public $user;
+
+    public function render()
+    {
+        return view('users.read');
+    }
+
+    public function show(User $user)
+    {
+        $this->user = $user;
+
+        $this->toggle();
+    }
+}

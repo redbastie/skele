@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Components\Users;
+
+use App\Models\User;
+use Redbastie\Skele\Components\ModalComponent;
+
+class Save extends ModalComponent
+{
+    public $user;
+
+    public function render()
+    {
+        return view('users.save');
+    }
+
+    public function show(User $user = null)
+    {
+        $this->model = $user->toArray();
+        $this->user = $user;
+
+        $this->toggle();
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
+            'password' => [$this->user->exists ? 'nullable' : 'required', 'confirmed'],
+        ];
+    }
+
+    public function save()
+    {
+        $validated = $this->validate();
+
+        if ($this->user->exists) {
+            $this->user->update($validated);
+        }
+        else {
+            User::create($validated);
+        }
+
+        $this->emitUp('$refresh');
+        $this->toggle();
+    }
+}

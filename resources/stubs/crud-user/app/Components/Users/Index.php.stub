@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Components\Users;
+
+use App\Models\User;
+use Redbastie\Skele\Components\ListComponent;
+
+class Index extends ListComponent
+{
+    public $routeUri = '/users';
+    public $routeName = 'users';
+    public $routeMiddleware = 'auth';
+
+    public function render()
+    {
+        return view('users.index', [
+            'users' => $this->query()->paginate($this->perPage),
+        ]);
+    }
+
+    public function query()
+    {
+        $query = User::query();
+
+        if ($this->model('search')) {
+            $query->where('name', 'like', '%' . $this->model('search') . '%');
+            $query->orWhere('email', 'like', '%' . $this->model('search') . '%');
+        }
+
+        return $query->orderBy('name');
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+    }
+}

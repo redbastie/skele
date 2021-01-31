@@ -1,0 +1,47 @@
+<div class="{{ $hidden ? 'hidden' : '' }} fixed inset-0 bg-black bg-opacity-50 overflow-y-auto p-4">
+    <div class="bg-white max-w-screen-sm mx-auto p-4">
+        <div class="flex justify-between mb-4">
+            <h1 class="text-xl">
+                {{ $user && $user->exists ? __('Update User') : __('Create User') }}
+            </h1>
+
+            <button type="button" wire:click="toggle">
+                <x-heroicon-o-x class="w-5 h-5"/>
+            </button>
+        </div>
+
+        <form wire:submit.prevent="save">
+            <div class="mb-4">
+                <label for="name">{{ __('Name') }}</label>
+                <input type="text" id="name" class="w-full" wire:model.defer="model.name">
+                @error('name')<p class="text-xs mt-1">{{ $message }}</p>@enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="email">{{ __('Email') }}</label>
+                <input type="email" id="email" class="w-full" wire:model.defer="model.email">
+                @error('email')<p class="text-xs mt-1">{{ $message }}</p>@enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="password">{{ $user && $user->exists ? __('New Password') : __('Password') }}</label>
+                <input type="password" id="password" class="w-full" wire:model.defer="model.password">
+                @error('password')<p class="text-xs mt-1">{{ $message }}</p>@enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="password_confirmation">{{ $user && $user->exists ? __('Confirm New Password') : __('Confirm Password') }}</label>
+                <input type="password" id="password_confirmation" class="w-full" wire:model.defer="model.password_confirmation">
+            </div>
+
+            <div class="flex justify-end space-x-4">
+                <button type="button" class="text-white bg-black px-3 py-2" wire:click="toggle">
+                    {{ __('Cancel') }}
+                </button>
+                <button type="submit" class="text-white bg-black px-3 py-2">
+                    {{ __('Save') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
