@@ -11,6 +11,10 @@ class ModalComponent extends Component
     {
         $this->hidden = !$this->hidden;
 
+        if ($this->hidden) {
+            $this->reset();
+        }
+
         $this->emit($this->hidden ? 'bodyScrollUnlock' : 'bodyScrollLock');
     }
 }
