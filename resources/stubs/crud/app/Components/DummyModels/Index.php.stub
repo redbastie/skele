@@ -1,0 +1,36 @@
+<?php
+
+namespace DummyComponentNamespace;
+
+use DummyModelNamespace\DummyModel;
+use Redbastie\Skele\Components\ListingComponent;
+
+class Index extends ListingComponent
+{
+    public $routeUri = '/DummyRouteUri';
+    public $routeName = 'DummyViewName';
+    public $routeMiddleware = 'auth';
+
+    public function render()
+    {
+        return view('DummyViewName.index', [
+            'DummyModelVariables' => $this->query()->paginate($this->perPage),
+        ]);
+    }
+
+    public function query()
+    {
+        $query = DummyModel::query();
+
+        if ($this->model('search')) {
+            $query->where('name', 'like', '%' . $this->model('search') . '%');
+        }
+
+        return $query->orderBy('name');
+    }
+
+    public function delete(DummyModel $DummyModelVariable)
+    {
+        $DummyModelVariable->delete();
+    }
+}

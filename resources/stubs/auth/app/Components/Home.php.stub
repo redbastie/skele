@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Components;
+
+use Redbastie\Skele\Components\Component;
+
+class Home extends Component
+{
+    public $routeUri = '/home';
+    public $routeName = 'home';
+    public $routeMiddleware = 'auth';
+
+    public function render()
+    {
+        return view('home');
+    }
+}

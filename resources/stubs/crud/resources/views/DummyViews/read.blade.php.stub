@@ -1,0 +1,35 @@
+<div class="{{ $hidden ? 'hidden' : '' }} fixed inset-0 bg-black bg-opacity-50 overflow-y-auto p-4">
+    <div class="bg-white max-w-screen-sm mx-auto p-4">
+        <div class="flex justify-between mb-4">
+            <h1 class="text-xl">{{ __('DummyModelTitle') }}</h1>
+
+            <button type="button" wire:click="toggle">
+                <x-heroicon-o-x class="w-5 h-5"/>
+            </button>
+        </div>
+
+        @if($DummyModelVariable && $DummyModelVariable->exists)
+            <div class="space-y-4">
+                <dl>
+                    <dt class="text-xs">{{ __('ID') }}</dt>
+                    <dd>{{ $DummyModelVariable->id }}</dd>
+                </dl>
+
+                <dl>
+                    <dt class="text-xs">{{ __('Name') }}</dt>
+                    <dd>{{ $DummyModelVariable->name }}</dd>
+                </dl>
+
+                <dl>
+                    <dt class="text-xs">{{ __('Created At') }}</dt>
+                    <dd>@displayDate($DummyModelVariable->created_at)</dd>
+                </dl>
+
+                <dl>
+                    <dt class="text-xs">{{ __('Updated At') }}</dt>
+                    <dd>@displayDate($DummyModelVariable->updated_at)</dd>
+                </dl>
+            </div>
+        @endif
+    </div>
+</div>

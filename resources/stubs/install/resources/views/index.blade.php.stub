@@ -1,0 +1,7 @@
+@section('title', __('Index'))
+
+<div>
+    <h1 class="text-xl mb-4">@yield('title')</h1>
+
+    <p>{{ __('Hello, world!') }}</p>
+</div>

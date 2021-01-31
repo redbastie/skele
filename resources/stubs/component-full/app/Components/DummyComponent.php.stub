@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyComponentNamespace;
+
+use Redbastie\Skele\Components\Component;
+
+class DummyComponent extends Component
+{
+    public $routeUri = '/DummyRouteUri';
+    public $routeName = 'DummyViewName';
+
+    public function render()
+    {
+        return view('DummyViewName');
+    }
+}

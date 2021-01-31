@@ -1,0 +1,23 @@
+<?php
+
+namespace DummyComponentNamespace;
+
+use DummyModelNamespace\DummyModel;
+use Redbastie\Skele\Components\ModalComponent;
+
+class Read extends ModalComponent
+{
+    public $DummyModelVariable;
+
+    public function render()
+    {
+        return view('DummyViewName.read');
+    }
+
+    public function show(DummyModel $DummyModelVariable = null)
+    {
+        $this->DummyModelVariable = $DummyModelVariable;
+
+        $this->toggle();
+    }
+}

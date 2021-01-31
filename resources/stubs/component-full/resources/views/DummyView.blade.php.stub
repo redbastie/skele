@@ -1,0 +1,5 @@
+@section('title', __('DummyViewTitle'))
+
+<div>
+    <p>{{ __("DummyWisdom") }}</p>
+</div>

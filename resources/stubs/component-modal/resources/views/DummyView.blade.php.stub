@@ -1,0 +1,13 @@
+<div class="{{ $hidden ? 'hidden' : '' }} fixed inset-0 bg-black bg-opacity-50 overflow-y-auto p-4">
+    <div class="bg-white max-w-screen-sm mx-auto p-4">
+        <div class="flex justify-between mb-4">
+            <h1 class="text-xl">{{ __('DummyViewTitle') }}</h1>
+
+            <button type="button" wire:click="toggle">
+                <x-heroicon-o-x class="w-5 h-5"/>
+            </button>
+        </div>
+
+        <p>{{ __("DummyWisdom") }}</p>
+    </div>
+</div>

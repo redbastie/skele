@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyComponentNamespace;
+
+use Redbastie\Skele\Components\Component;
+
+class DummyComponent extends Component
+{
+    public function render()
+    {
+        return view('DummyViewName');
+    }
+}

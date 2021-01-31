@@ -1,0 +1,48 @@
+@section('title', __('DummyModelTitles'))
+
+<div>
+    <h1 class="text-xl mb-4">@yield('title')</h1>
+
+    <div class="flex justify-between space-x-4 mb-4">
+        <input type="search" placeholder="{{ __('Search') }}" class="min-w-0" wire:model.debounce.500ms="model.search">
+
+        <button type="button" class="text-white bg-black px-3 py-2" wire:click="$emitTo('DummyViewName.save', 'show')">
+            {{ __('Create') }}
+        </button>
+    </div>
+
+    <div class="border divide-y">
+        @forelse($DummyModelVariables as $DummyModelVariable)
+            <div class="flex justify-between p-4">
+                <div>
+                    <h6>{{ $DummyModelVariable->name }}</h6>
+                    <p class="text-xs">@displayDate($DummyModelVariable->created_at)</p>
+                </div>
+
+                <div class="flex space-x-3">
+                    <button type="button" wire:click="$emitTo('DummyViewName.read', 'show', {{ $DummyModelVariable->id }})">
+                        <x-heroicon-o-eye class="w-5 h-5"/>
+                    </button>
+                    <button type="button" wire:click="$emitTo('DummyViewName.save', 'show', {{ $DummyModelVariable->id }})">
+                        <x-heroicon-o-pencil-alt class="w-5 h-5"/>
+                    </button>
+                    <button type="button" wire:click="delete({{ $DummyModelVariable->id }})"
+                            onclick="confirm('{{ __('Confirm delete?') }}') || event.stopImmediatePropagation()">
+                        <x-heroicon-o-trash class="w-5 h-5"/>
+                    </button>
+                </div>
+            </div>
+        @empty
+            <p class="p-4">{{ __('No results found.') }}</p>
+        @endforelse
+    </div>
+
+    @if($this->infiniteScroll)
+        <div id="infinite-scroll" class="hidden mt-4">
+            <x-heroicon-o-refresh class="animate-spin w-5 h-5 mx-auto"/>
+        </div>
+    @endif
+
+    @livewire('DummyViewName.read')
+    @livewire('DummyViewName.save')
+</div>

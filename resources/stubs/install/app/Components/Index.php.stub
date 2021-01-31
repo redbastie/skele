@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Components;
+
+use Redbastie\Skele\Components\Component;
+
+class Index extends Component
+{
+    public $routeUri = '/';
+    public $routeName = 'index';
+
+    public function render()
+    {
+        return view('index');
+    }
+}

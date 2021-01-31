@@ -1,0 +1,26 @@
+@section('title', __('DummyViewTitle'))
+
+<div>
+    <h1 class="text-xl mb-4">@yield('title')</h1>
+
+    <div class="mb-4">
+        <input type="search" placeholder="{{ __('Search') }}" class="min-w-0" wire:model.debounce.500ms="model.search">
+    </div>
+
+    <div class="border divide-y">
+        @forelse($DummyModelVariables as $DummyModelVariable)
+            <div class="p-4">
+                <h6>{{ $DummyModelVariable->name }}</h6>
+                <p class="text-xs">@displayDate($DummyModelVariable->created_at)</p>
+            </div>
+        @empty
+            <p class="p-4">{{ __('No results found.') }}</p>
+        @endforelse
+    </div>
+
+    @if($this->infiniteScroll)
+        <div id="infinite-scroll" class="hidden mt-4">
+            <x-heroicon-o-refresh class="animate-spin w-5 h-5 mx-auto"/>
+        </div>
+    @endif
+</div>

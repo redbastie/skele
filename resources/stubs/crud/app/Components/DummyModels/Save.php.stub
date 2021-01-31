@@ -1,0 +1,46 @@
+<?php
+
+namespace DummyComponentNamespace;
+
+use DummyModelNamespace\DummyModel;
+use Redbastie\Skele\Components\ModalComponent;
+
+class Save extends ModalComponent
+{
+    public $DummyModelVariable;
+
+    public function render()
+    {
+        return view('DummyViewName.save');
+    }
+
+    public function show(DummyModel $DummyModelVariable = null)
+    {
+        $this->model = $DummyModelVariable->toArray();
+        $this->DummyModelVariable = $DummyModelVariable;
+
+        $this->toggle();
+    }
+
+    public function rules()
+    {
+        return [
+            'name' => ['required'],
+        ];
+    }
+
+    public function save()
+    {
+        $validated = $this->validate();
+
+        if ($this->DummyModelVariable->exists) {
+            $this->DummyModelVariable->update($validated);
+        }
+        else {
+            DummyModel::create($validated);
+        }
+
+        $this->emitUp('$refresh');
+        $this->toggle();
+    }
+}
