@@ -28,6 +28,6 @@ class InstallCommand extends Command
         exec('npm install tailwindcss@latest postcss@latest autoprefixer@latest @tailwindcss/forms -D');
         exec('npm run dev');
 
-        $this->info('Installation complete! <href=' . config('app.url') . '>' . config('app.url') . '</>');
+        $this->info('Installation complete! <a href=' . config('app.url') . '>' . config('app.url') . '</a>');
     }
 }

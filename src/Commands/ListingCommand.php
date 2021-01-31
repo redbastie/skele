@@ -32,12 +32,13 @@ class ListingCommand extends Command
             'DummyModelVariables' => Str::camel(Str::plural($modelTitle = preg_replace('/(.)(?=[A-Z])/u', '$1 ', $modelParser->className()))),
             'DummyModelVariable' => Str::camel($modelTitle),
             'DummyModel' => $modelParser->className(),
-            'DummyRouteUri' => str_replace('.', '/', $componentParser->viewName()),
+            'DummyRouteUri' => $dummyRouteUri = str_replace('.', '/', $componentParser->viewName()),
             'DummyViewName' => $componentParser->viewName(),
             'DummyViewTitle' => preg_replace('/(.)(?=[A-Z])/u', '$1 ', $componentParser->className()),
             'DummyWisdom' => $componentParser->wisdomOfTheTao(),
         ]);
 
-        $this->warn('<info>' . $this->argument('class') . '</info> component & view generated!');
+        $this->warn('<info>' . $this->argument('class') . '</info> component & view generated! ' .
+            '<href=' . url($dummyRouteUri) . '>' . url($dummyRouteUri) . '</>');
     }
 }

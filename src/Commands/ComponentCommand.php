@@ -30,12 +30,13 @@ class ComponentCommand extends Command
             'resources/views/DummyView.blade.php.stub' => $componentParser->relativeViewPath(),
             'DummyComponentNamespace' => $componentParser->classNamespace(),
             'DummyComponent' => $componentParser->className(),
-            'DummyRouteUri' => str_replace('.', '/', $componentParser->viewName()),
+            'DummyRouteUri' => $dummyRouteUri = str_replace('.', '/', $componentParser->viewName()),
             'DummyViewName' => $componentParser->viewName(),
             'DummyViewTitle' => preg_replace('/(.)(?=[A-Z])/u', '$1 ', $componentParser->className()),
             'DummyWisdom' => $componentParser->wisdomOfTheTao(),
         ]);
 
-        $this->warn('<info>' . $this->argument('class') . '</info> component & view generated!');
+        $this->warn('<info>' . $this->argument('class') . '</info> component & view generated! ' .
+            ($this->option('full') ? '<href=' . url($dummyRouteUri) . '>' . url($dummyRouteUri) . '</>' : ''));
     }
 }
