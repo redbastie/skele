@@ -34,7 +34,7 @@ class CrudCommand extends Command
             'DummyViewName' => $componentParser->viewName(),
         ]);
 
-        $this->warn('<info>' . $this->argument('class') . '</info> components & views generated! ' .
+        $this->warn('<info>' . $this->argument('class') . '</info> CRUD components & views generated! ' .
             '<href=' . url($dummyRouteUri) . '>' . url($dummyRouteUri) . '</>');
 
         if (!$this->fileExists($modelParser->relativeClassPath())) {

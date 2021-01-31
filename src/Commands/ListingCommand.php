@@ -38,7 +38,7 @@ class ListingCommand extends Command
             'DummyWisdom' => $componentParser->wisdomOfTheTao(),
         ]);
 
-        $this->warn('<info>' . $this->argument('class') . '</info> component & view generated! ' .
+        $this->warn('<info>' . $this->argument('class') . '</info> listing component & view generated! ' .
             '<href=' . url($dummyRouteUri) . '>' . url($dummyRouteUri) . '</>');
     }
 }
