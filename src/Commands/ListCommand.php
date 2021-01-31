@@ -6,11 +6,11 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Livewire\Commands\ComponentParser;
 
-class ListingCommand extends Command
+class ListCommand extends Command
 {
     use ManagesFiles;
 
-    protected $signature = 'skele:listing {class} {--model=}';
+    protected $signature = 'skele:list {class} {--model=}';
 
     public function handle()
     {
@@ -23,7 +23,7 @@ class ListingCommand extends Command
         $componentParser = new ComponentParser('App\\Components', resource_path('views'), $this->argument('class'));
         $modelParser = new ComponentParser('App\\Models', resource_path('views'), $this->option('model'));
 
-        $this->createFiles('listing', [
+        $this->createFiles('list', [
             'app/Components/DummyComponent.php.stub' => $componentParser->relativeClassPath(),
             'resources/views/DummyView.blade.php.stub' => $componentParser->relativeViewPath(),
             'DummyComponentNamespace' => $componentParser->classNamespace(),
@@ -38,7 +38,7 @@ class ListingCommand extends Command
             'DummyWisdom' => $componentParser->wisdomOfTheTao(),
         ]);
 
-        $this->warn('<info>' . $this->argument('class') . '</info> listing component & view generated! ' .
+        $this->warn('<info>' . $this->argument('class') . '</info> list component & view generated! ' .
             '<href=' . url($dummyRouteUri) . '>' . url($dummyRouteUri) . '</>');
     }
 }

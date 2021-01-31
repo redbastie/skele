@@ -4,7 +4,7 @@ namespace Redbastie\Skele\Components;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ListingComponent extends Component
+class ListComponent extends Component
 {
     public $perPage = 15;
     protected $listeners = ['$refresh', 'infiniteScroll'];

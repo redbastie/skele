@@ -3,9 +3,9 @@
 namespace DummyComponentNamespace;
 
 use DummyModelNamespace\DummyModel;
-use Redbastie\Skele\Components\ListingComponent;
+use Redbastie\Skele\Components\ListComponent;
 
-class Index extends ListingComponent
+class Index extends ListComponent
 {
     public $routeUri = '/DummyRouteUri';
     public $routeName = 'DummyViewName';

@@ -106,13 +106,13 @@ Generates CRUD components & views for a specified model class. If the model does
     php artisan skele:crud Vehicle
     php artisan skele:crud Admin/Vehicle
 
-### Listing
+### List
 
-    php artisan skele:listing {class} {--model=}
+    php artisan skele:list {class} {--model=}
 
-Generates a listing component with searching & infinite scrolling for the specified model. A `--model` must be specified.
+Generates a list component with searching & infinite scrolling for the specified model. A `--model` must be specified.
 
 #### Examples
 
-    php artisan skele:listing Vehicles --model=Vehicle
-    php artisan skele:listing Admin/Vehicles --model=Admin/Vehicle
+    php artisan skele:list Vehicles --model=Vehicle
+    php artisan skele:list Admin/Vehicles --model=Admin/Vehicle

@@ -14,7 +14,7 @@ class SkeleServiceProvider extends ServiceProvider
                 \Redbastie\Skele\Commands\CrudCommand::class,
                 \Redbastie\Skele\Commands\ComponentCommand::class,
                 \Redbastie\Skele\Commands\InstallCommand::class,
-                \Redbastie\Skele\Commands\ListingCommand::class,
+                \Redbastie\Skele\Commands\ListCommand::class,
                 \Redbastie\Skele\Commands\MigrateCommand::class,
                 \Redbastie\Skele\Commands\ModelCommand::class,
             ]);
