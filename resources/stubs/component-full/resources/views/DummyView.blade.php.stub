@@ -1,5 +1,7 @@
 @section('title', __('DummyViewTitle'))
 
 <div>
+    <h1 class="text-xl mb-4">{{ __('DummyViewTitle') }}</h1>
+
     <p>{{ __("DummyWisdom") }}</p>
 </div>
