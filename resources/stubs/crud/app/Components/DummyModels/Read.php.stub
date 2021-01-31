@@ -14,7 +14,7 @@ class Read extends ModalComponent
         return view('DummyViewName.read');
     }
 
-    public function show(DummyModel $DummyModelVariable = null)
+    public function show(DummyModel $DummyModelVariable)
     {
         $this->DummyModelVariable = $DummyModelVariable;
 
