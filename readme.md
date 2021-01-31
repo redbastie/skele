@@ -2,6 +2,8 @@
 
 Rapid Laravel Livewire + TailwindCSS app development package.
 
+<a href="https://www.youtube.com/watch?v=lSh-PPZrN-A"><img src="https://i.imgur.com/aErc5Kt.png"></a>
+
 #### Requirements
 
 - Laravel 8
