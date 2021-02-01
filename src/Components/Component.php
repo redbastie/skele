@@ -10,7 +10,7 @@ class Component extends \Livewire\Component
     public $routeUri, $routeName, $routeMiddleware, $routeDomain, $routeWhere;
     public $model = [];
 
-    protected function model($key)
+    public function model($key)
     {
         return Arr::get($this->model, $key);
     }
