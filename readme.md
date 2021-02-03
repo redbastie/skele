@@ -1,3 +1,9 @@
+# NO LONGER MAINTAINED
+
+This package is no longer maintained. Please consider my latest package here: https://github.com/redbastie/tailwire
+
+-----
+
 # Skele
 
 Rapid Laravel Livewire + TailwindCSS app development package.
